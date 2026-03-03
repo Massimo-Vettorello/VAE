@@ -84,11 +84,6 @@ class VAE(nn.Module):
         recon_x = self.decode(z) # get likelihood parameters
         return recon_x, mu, logvar
 
-
-VAE_model = VAE(
-                )
-
-
 def loss_function(recon_x, x, mu, logvar, likelihood="bernoulli", beta=1.0):
     """Computes the VAE loss."""
     
