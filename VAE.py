@@ -12,21 +12,6 @@ torch.nn.Module provides:
 
 '''
 
-
-cuda = True
-DEVICE = torch.device("cuda" if cuda else "cpu")
-
-
-batch_size = 100
-
-x_dim  = 784
-hidden_dim = 400
-latent_dim = 200
-
-lr = 1e-3
-
-epochs = 30
-
 class Encoder(nn.Module):
     
     def __init__(self, input_dim, hidden_dim, latent_dim):
@@ -85,10 +70,5 @@ class Model(nn.Module):
         
         return x_hat, mean, log_var
 
-
-encoder = Encoder(input_dim=x_dim, hidden_dim=hidden_dim, latent_dim=latent_dim)
-decoder = Decoder(latent_dim=latent_dim, hidden_dim = hidden_dim, output_dim = x_dim)
-
-model = Model(Encoder=encoder, Decoder=decoder).to(DEVICE)
 
     
