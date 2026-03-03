@@ -58,7 +58,7 @@ class Model(nn.Module):
         self.Decoder = Decoder
         
     def reparameterization(self, mean, var):
-        epsilon = torch.randn_like(var).to(device)        # sampling epsilon        
+        epsilon = torch.randn_like(var)                 # sampling epsilon  .to(device)        
         z = mean + var*epsilon                          # reparameterization trick
         return z
         
