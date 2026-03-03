@@ -61,10 +61,10 @@ class Decoder(nn.Module):
 
 class VAE(nn.Module):
     
-    def __init__(self, input_size, h1_size, h2_size, latent_dim, output_size, likelihood = "bernoulli"):
+    def __init__(self, input_size, hiddem_dim , latent_dim, output_size, likelihood = "bernoulli"):
         super().__init__()
-        self.encoder = Encoder(input_size, h1_size, h2_size, latent_dim)
-        self.decoder = Decoder(latent_dim, h2_size, h1_size, output_size)
+        self.encoder = Encoder(input_size, hidden_dim, latent_dim)
+        self.decoder = Decoder(latent_dim, hidden_dim, output_size)
         if likelihood not in ["gaussian", "bernoulli"]:
             raise ValueError("Likelihood must be either 'gaussian'"
                               "or 'bernoulli'"
